@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.main-heading {
+  @apply text-primary font-bold text-5xl;
+}
+
+.sub-heading {
+  @apply text-primary font-bold text-4xl;
+}
+
+.active {
+  @apply bg-primary text-white hover:bg-primary !important;
+}
+
+.active span {
+  @apply bg-[#211935];
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select {
+  background-image: url("./assets/selectArrow.svg");
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+}
+
+input {
+  @apply px-3 py-2 border border-gray-400 rounded-lg w-full;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-lg;
+}
