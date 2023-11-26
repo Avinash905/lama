@@ -37,13 +37,15 @@ const EmailModal = () => {
             onChange={(event) => setEmailInput(event.target.value)}
           />
           {error && <span className="text-red-500">Email can't be empty</span>}
+          <Button
+            content={"Create"}
+            customCss={
+              "text-white w-fit ml-auto bg-primary py-2 px-4 rounded-md"
+            }
+            handleClick={handleClick}
+            loading={isLoading}
+          />
         </form>
-        <Button
-          content={"Create"}
-          customCss={"text-white w-fit ml-auto bg-primary py-2 px-4 rounded-md"}
-          handleClick={handleClick}
-          loading={isLoading}
-        />
       </div>
     </div>
   );

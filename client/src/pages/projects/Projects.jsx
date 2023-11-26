@@ -3,11 +3,14 @@ import {
   CreateNewProject,
   ProjectCard,
   CreateProjectModal,
+  PageLoading,
 } from "../../components";
 import { ProjectContext } from "../../contexts/ProjectContext";
 
 const Projects = () => {
-  const { projects } = useContext(ProjectContext);
+  const { isLoading, projects } = useContext(ProjectContext);
+
+  if (isLoading) return <PageLoading />;
 
   return (
     <>

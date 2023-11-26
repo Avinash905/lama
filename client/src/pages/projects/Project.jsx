@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UploadCard, NoFiles, Files, UploadModal } from "../../components";
+import {
+  UploadCard,
+  NoFiles,
+  Files,
+  UploadModal,
+  PageLoading,
+} from "../../components";
 import { youtubeLogo, spotifyLogo, rssFeedLogo } from "../../assets";
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { useParams } from "react-router-dom";
 
 const Project = () => {
   const [clickedCardData, setClickedCardData] = useState({});
-  const { files, getFiles, projects } = useContext(ProjectContext);
+  const { isLoading, files, getFiles, projects } = useContext(ProjectContext);
   const { projectId } = useParams();
 
   const uploadTypes = [
@@ -18,10 +24,12 @@ const Project = () => {
     files?.length > 0 ? [...uploadTypes] : [...uploadTypes, ...uploadTypes];
 
   useEffect(() => {
-    if (projectId === undefined) {
+    if (projectId) {
       getFiles(projectId);
-    } else getFiles(projects[0]._id);
+    } else if (!isLoading) getFiles(projects[0]?._id);
   }, []);
+
+  if (isLoading) return <PageLoading />;
 
   return (
     <section className="flex flex-col gap-4">

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ImPencil } from "react-icons/im";
 import { IoMdSearch } from "react-icons/io";
 import { ProjectContext } from "../../contexts/ProjectContext";
-import { Button } from "../../components";
+import { Button, PageLoading } from "../../components";
 
 const EditTranscript = ({}) => {
   const {
@@ -21,6 +21,12 @@ const EditTranscript = ({}) => {
     updateFileDescription(editingFileId, description);
     toggleEditMode();
   };
+
+  useEffect(() => {
+    document.querySelector(".Projects").classList.add("active");
+  }, []);
+
+  if (isLoading) return <PageLoading />;
 
   return (
     <section className="flex flex-col gap-4">
