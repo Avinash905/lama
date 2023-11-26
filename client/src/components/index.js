@@ -4,6 +4,7 @@ import HomeHeader from "./header/HomeHeader";
 import HomeMenu from "./menu/HomeMenu";
 import BackToHome from "./backToHome/BackToHome";
 import CreateNewProject from "./button/CreateNewProject";
+import Button from "./button/Button";
 import CreateProjectModal from "./modal/CreateProjectModal";
 import EmailModal from "./modal/EmailModal";
 import UploadModal from "./modal/UploadModal";
@@ -25,6 +26,7 @@ export {
   HomeMenu,
   BackToHome,
   CreateNewProject,
+  Button,
   CreateProjectModal,
   EmailModal,
   UploadModal,

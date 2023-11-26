@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { profilePic } from "../../assets";
-import { Input } from "../../components";
+import { Button, Input } from "../../components";
 import { UserContext } from "../../contexts/UserContext";
 
 const Settings = () => {
-  const { username, email, userId, updateUsername } = useContext(UserContext);
+  const { isLoading, username, email, userId, updateUsername } =
+    useContext(UserContext);
   const [usernameInput, setUsernameInput] = useState(username);
   const [editMode, setEditMode] = useState(false);
 
@@ -37,12 +38,14 @@ const Settings = () => {
               handleChange={(event) => setUsernameInput(event.target.value)}
               disabled={editMode ? false : true}
             />
-            <button
-              className="text-white bg-primary px-6 py-2.5 h-fit rounded-lg font-semibold text-sm"
-              onClick={editBtnHandler}
-            >
-              {editMode ? "Save" : "Edit"}
-            </button>
+            <Button
+              content={editMode ? "Save" : "Edit"}
+              customCss={
+                "text-white bg-primary px-6 py-2.5 h-fit rounded-lg font-semibold text-sm"
+              }
+              handleClick={editBtnHandler}
+              loading={isLoading}
+            />
           </div>
           <Input
             value={email}
@@ -60,9 +63,12 @@ const Settings = () => {
             <span>You are currently on the </span>
             <Link className="font-semibold underline">Ques AI Basic Plan!</Link>
           </div>
-          <button className="bg-white text-primary px-6 py-2 rounded font-semibold text-sm">
-            Upgrade
-          </button>
+          <Button
+            content={"Upgrade"}
+            customCss={
+              "bg-white text-primary px-6 py-2 rounded font-semibold text-sm"
+            }
+          />
         </div>
         <Link
           to={"/dashboard/settings"}

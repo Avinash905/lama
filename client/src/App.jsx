@@ -15,46 +15,64 @@ import { RootLayout, DashboardLayout } from "./layouts";
 function App() {
   return (
     <Router>
-      <Suspense fallback={<PageLoading />}>
-        <Routes>
+      <Routes>
+        <Route
+          path="/dashboard"
+          element={<DashboardLayout />}
+        >
           <Route
-            path="/dashboard"
-            element={<DashboardLayout />}
-          >
+            path="settings"
+            element={
+              <Suspense fallback={<PageLoading />}>
+                <Settings />
+              </Suspense>
+            }
+          />
+          <Route path="project">
             <Route
-              path="settings"
-              element={<Settings />}
+              path="upload/:projectId"
+              element={
+                <Suspense fallback={<PageLoading />}>
+                  <Project />
+                </Suspense>
+              }
             />
-            <Route path="project">
-              <Route
-                path="upload/:projectId"
-                element={<Project />}
-              />
-              <Route
-                path="configuration/:projectId"
-                element={<Configuration />}
-              />
-              <Route
-                path="transcript/:projectId"
-                element={<EditTranscript />}
-              />
-            </Route>
+            <Route
+              path="configuration/:projectId"
+              element={
+                <Suspense fallback={<PageLoading />}>
+                  <Configuration />
+                </Suspense>
+              }
+            />
+            <Route
+              path="transcript/:projectId"
+              element={
+                <Suspense fallback={<PageLoading />}>
+                  <EditTranscript />
+                </Suspense>
+              }
+            />
           </Route>
+        </Route>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<PageLoading />}>
+              <RootLayout />
+            </Suspense>
+          }
+        >
           <Route
-            path="/"
-            element={<RootLayout />}
-          >
-            <Route
-              index
-              element={<Home />}
-            />
-            <Route
-              path="/*"
-              element={<Error />}
-            />
-          </Route>
-        </Routes>
-      </Suspense>
+            index
+            element={<Home />}
+          />
+          <Route
+            path="/*"
+            element={<Error />}
+          />
+        </Route>
+      </Routes>
     </Router>
   );
 }

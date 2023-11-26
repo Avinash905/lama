@@ -134,8 +134,8 @@ const ProjectProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchProjects(userId);
-  }, []);
+    userId && fetchProjects(userId);
+  }, [userId]);
 
   return (
     <ProjectContext.Provider

@@ -1,6 +1,7 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import userReducer from "../reducers/userReducer";
 import axios from "axios";
+import { ProjectContext } from "./ProjectContext";
 
 axios.defaults.baseURL = import.meta.env.VITE_SERVER_DOMAIN;
 
@@ -19,6 +20,8 @@ const UserProvider = ({ children }) => {
 
   const findOrCreateUser = async (email) => {
     try {
+      if (!email) return;
+
       dispatch({ type: "LOADING", payload: true });
 
       const { data } = await axios.post("/user", { email });

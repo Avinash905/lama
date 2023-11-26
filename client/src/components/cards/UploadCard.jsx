@@ -18,6 +18,7 @@ const UploadCard = ({ image, altText, text, setClickedCardData }) => {
         src={image}
         alt={altText}
         className="w-14"
+        loading="lazy"
       />
       <div className="flex flex-col font-bold text-xl text-gray-700">
         <span>Upload {text === "RSS Feed" ? "from " : ""}</span>

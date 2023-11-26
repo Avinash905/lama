@@ -10,6 +10,7 @@ const NoFiles = () => {
           src={cloudUpload}
           alt="file upload"
           className="w-20"
+          loading="lazy"
         />
         <p className="text-lg">
           Select a file or drag and drop here (Podcast Media or Transcription

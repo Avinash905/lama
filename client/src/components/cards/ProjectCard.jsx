@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { format, render, cancel, register } from "timeago.js";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -16,7 +17,7 @@ const ProjectCard = ({ project }) => {
           {project?.files?.length ? project?.files?.length : 0} Episodes
         </p>
         <span className="text-gray-400 text-sm mt-auto">
-          Last edited a week ago
+          {format(project?.updatedAt, "en_US")}
         </span>
       </div>
     </Link>

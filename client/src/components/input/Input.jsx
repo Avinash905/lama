@@ -22,7 +22,7 @@ const Input = ({
           type={"text"}
           name={id}
           id={id}
-          value={value}
+          value={value || ""}
           onChange={handleChange}
           {...rest}
         />

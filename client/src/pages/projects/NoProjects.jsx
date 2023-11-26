@@ -17,6 +17,7 @@ const NoProjects = () => {
         src={hero}
         alt="hero"
         className="w-96"
+        loading="lazy"
       />
       <p className="text-gray-500 text-2xl text-center px-16">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

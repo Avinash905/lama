@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { ModalContext } from "../../contexts/ModalContext";
 import { ProjectContext } from "../../contexts/ProjectContext";
+import { Button } from "..";
 
 const CreateProjectModal = () => {
   const { createProjectModalOpen, closeCreateProjectModal } =
     useContext(ModalContext);
-  const { createNewProject } = useContext(ProjectContext);
+  const { isLoading, createNewProject } = useContext(ProjectContext);
   const [projectName, setProjectName] = useState("");
   const [error, setError] = useState(false);
 
@@ -17,7 +18,7 @@ const CreateProjectModal = () => {
     createNewProject(projectName);
     setProjectName("");
     setError(false);
-    closeCreateProjectModal();
+    if (!isLoading) closeCreateProjectModal();
   };
 
   return (
@@ -49,18 +50,17 @@ const CreateProjectModal = () => {
           )}
         </form>
         <div className="flex gap-4 justify-end">
-          <button
-            className="text-red-500 py-2 px-4 rounded-lg hover:bg-gray-100"
-            onClick={closeCreateProjectModal}
-          >
-            Cancel
-          </button>
-          <button
-            className="text-white bg-primary py-2 px-4 rounded-lg"
-            onClick={handleCreate}
-          >
-            Create
-          </button>
+          <Button
+            content={"Cancel"}
+            customCss={"text-red-500 py-2 px-4 rounded-lg hover:bg-gray-100"}
+            handleClick={closeCreateProjectModal}
+          />
+          <Button
+            content={"Create"}
+            customCss={"text-white bg-primary py-2 px-4 rounded-lg"}
+            handleClick={handleCreate}
+            loading={isLoading}
+          />
         </div>
       </div>
     </div>

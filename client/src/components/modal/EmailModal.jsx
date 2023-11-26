@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import Button from "../button/Button";
 
 const EmailModal = () => {
-  const { findOrCreateUser } = useContext(UserContext);
+  const { isLoading, findOrCreateUser } = useContext(UserContext);
   const [emailInput, setEmailInput] = useState("");
   const [error, setError] = useState(false);
 
@@ -37,12 +38,12 @@ const EmailModal = () => {
           />
           {error && <span className="text-red-500">Email can't be empty</span>}
         </form>
-        <button
-          className="text-white w-fit ml-auto bg-primary py-2 px-4 rounded-md"
-          onClick={handleClick}
-        >
-          Create
-        </button>
+        <Button
+          content={"Create"}
+          customCss={"text-white w-fit ml-auto bg-primary py-2 px-4 rounded-md"}
+          handleClick={handleClick}
+          loading={isLoading}
+        />
       </div>
     </div>
   );

@@ -3,11 +3,12 @@ import { IoCloseOutline } from "react-icons/io5";
 import { ModalContext } from "../../contexts/ModalContext";
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { useParams } from "react-router-dom";
+import Button from "../button/Button";
 
 const UploadModal = ({ clickedCardData }) => {
   const { uploadModalOpen, closeUploadModal } = useContext(ModalContext);
   const { projectId } = useParams();
-  const { uploadFile } = useContext(ProjectContext);
+  const { isLoading, uploadFile } = useContext(ProjectContext);
   const [filename, setFileName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -17,7 +18,7 @@ const UploadModal = ({ clickedCardData }) => {
     uploadFile({ projectId, filename, description });
     setFileName("");
     setDescription("");
-    closeUploadModal();
+    // closeUploadModal();
   };
 
   return (
@@ -37,6 +38,7 @@ const UploadModal = ({ clickedCardData }) => {
             src={clickedCardData.image}
             alt={clickedCardData.text}
             className="w-12"
+            loading="lazy"
           />
           <h2 className="font-bold text-2xl text-gray-700">
             Upload from {clickedCardData.text}
@@ -76,12 +78,14 @@ const UploadModal = ({ clickedCardData }) => {
             />
           </div>
         </form>
-        <button
-          className="text-white bg-gray-800 py-2 px-6 rounded-md w-fit ml-auto"
-          onClick={handleUpload}
-        >
-          Upload
-        </button>
+        <Button
+          content={"Upload"}
+          customCss={
+            "text-white bg-gray-800 py-2 px-6 rounded-md w-fit ml-auto"
+          }
+          handleClick={handleUpload}
+          loading={isLoading}
+        />
       </div>
     </div>
   );

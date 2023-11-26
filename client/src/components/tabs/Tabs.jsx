@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GeneralTab from "./GeneralTab";
 import DisplayTab from "./DisplayTab";
 import AdvancedTab from "./AdvancedTab";
@@ -7,23 +7,26 @@ import { ProjectContext } from "../../contexts/ProjectContext";
 import { useParams } from "react-router-dom";
 
 const Tabs = () => {
-  const { updateConfiguration } = useContext(ProjectContext);
   const { projectId } = useParams();
   const [activeTab, setActiveTab] = useState(1);
+  const { projects, updateConfiguration } = useContext(ProjectContext);
+  const currentProject = projects.filter(
+    (project) => project._id === projectId
+  );
   const [inputValues, setInputValues] = useState({
-    chatbotName: "",
-    welcomeMessage: "",
-    inputPlaceholder: "",
-    primaryColor: "",
-    fontColor: "",
-    fontSize: "",
-    chatHeight: "",
-    showSources: true,
-    bottomDistance: "",
-    horizontalDistance: "",
-    chatIconSize: "",
-    screenPosition: "",
-    botIcon: "",
+    chatbotName: currentProject?.configuration?.chatbotName || "",
+    welcomeMessage: currentProject?.configuration?.welcomeMessage || "",
+    inputPlaceholder: currentProject?.configuration?.inputPlaceholder || "",
+    primaryColor: currentProject?.configuration?.primaryColor || "",
+    fontColor: currentProject?.configuration?.fontColor || "",
+    fontSize: currentProject?.configuration?.fontSize || "",
+    chatHeight: currentProject?.configuration?.chatHeight || "",
+    showSources: currentProject?.configuration?.showSources || true,
+    bottomDistance: currentProject?.configuration?.bottomDistance || "",
+    horizontalDistance: currentProject?.configuration?.horizontalDistance || "",
+    chatIconSize: currentProject?.configuration?.chatIconSize || "",
+    screenPosition: currentProject?.configuration?.screenPosition || "",
+    botIcon: currentProject?.configuration?.botIcon || "",
   });
 
   const changeTab = (tabNumber) => {

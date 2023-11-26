@@ -13,7 +13,7 @@ const userReducer = (state, action) => {
       };
     case "SET_USER":
       const { username, email, _id } = action.payload;
-      localStorage.setItem("username", email);
+      localStorage.setItem("username", username);
       localStorage.setItem("email", email);
       localStorage.setItem("userId", _id);
 
