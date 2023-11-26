@@ -4,7 +4,6 @@ const corsOptions = require("./config/corsOptions");
 const express = require("express");
 const errorHandler = require("./middleware/errorHandler");
 const credentials = require("./middleware/credentials");
-// const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConnection");
 
@@ -16,8 +15,6 @@ app.use(credentials);
 app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }));
-
-// app.use(cookieParser());
 
 app.use(express.json());
 
