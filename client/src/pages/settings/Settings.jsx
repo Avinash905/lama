@@ -28,7 +28,8 @@ const Settings = () => {
           <img
             src={profilePic}
             alt="profile pic"
-            className="w-32"
+            className="w-32 border border-gray-200 rounded-full"
+            loading="lazy"
           />
           <div className="flex gap-2 items-end w-full">
             <Input

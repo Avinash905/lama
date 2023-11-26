@@ -10,10 +10,8 @@ import Button from "../button/Button";
 const Tabs = () => {
   const { projectId } = useParams();
   const [activeTab, setActiveTab] = useState(1);
-  const { projects, updateConfiguration } = useContext(ProjectContext);
-  const currentProject = projects.filter(
-    (project) => project._id === projectId
-  );
+  const { updateConfiguration } = useContext(ProjectContext);
+
   const [inputValues, setInputValues] = useState({
     chatbotName: "",
     welcomeMessage: "",
