@@ -41,7 +41,7 @@ const Settings = () => {
             <Button
               content={editMode ? "Save" : "Edit"}
               customCss={
-                "text-white bg-primary px-6 py-2.5 h-fit rounded-lg font-semibold text-sm"
+                "text-white bg-primary px-6 py-2.5 h-[41px] rounded-lg font-semibold text-sm"
               }
               handleClick={editBtnHandler}
               loading={isLoading}

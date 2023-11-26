@@ -25,9 +25,9 @@ const EmailModal = () => {
         <form className="flex flex-col gap-2">
           <label
             htmlFor="projectName"
-            className="text-lg text-gray-600"
+            className="text-md text-gray-600"
           >
-            Enter Email:
+            Enter Your Email:
           </label>
           <input
             type="email"

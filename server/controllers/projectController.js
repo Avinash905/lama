@@ -1,5 +1,9 @@
 const projectServices = require("../services/projectServices");
 
+/**
+ * GET /api/project/:userId
+ * Fetches all projects of a particular user.
+ */
 const getAllProjects = async (req, res, next) => {
   try {
     const { userId } = req.params;
@@ -13,6 +17,10 @@ const getAllProjects = async (req, res, next) => {
   }
 };
 
+/**
+ * POST /api/project
+ * Creates a new project for a particular user.
+ */
 const createProject = async (req, res, next) => {
   try {
     const { userId, projectName } = req.body;
@@ -25,6 +33,10 @@ const createProject = async (req, res, next) => {
   }
 };
 
+/**
+ * UPDATE /api/project
+ * Updates the configuration of a project.
+ */
 const updateConfiguration = async (req, res, next) => {
   try {
     const { projectId, inputValues } = req.body;

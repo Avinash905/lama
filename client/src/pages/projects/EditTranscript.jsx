@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ImPencil } from "react-icons/im";
 import { IoMdSearch } from "react-icons/io";
 import { ProjectContext } from "../../contexts/ProjectContext";
@@ -14,7 +14,7 @@ const EditTranscript = ({}) => {
     isLoading,
   } = useContext(ProjectContext);
   const fileDescription = files?.filter((file) => file._id === editingFileId)[0]
-    .description;
+    ?.description;
   const [description, setDescription] = useState(fileDescription);
 
   const handleSave = () => {
@@ -69,9 +69,8 @@ const EditTranscript = ({}) => {
           rows={15}
           disabled={!editMode}
           onChange={(event) => setDescription(event.target.value)}
-        >
-          {description}
-        </textarea>
+          value={description}
+        ></textarea>
       </div>
     </section>
   );

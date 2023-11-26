@@ -5,6 +5,7 @@ import AdvancedTab from "./AdvancedTab";
 import uploadImage from "../../utils/uploadImage";
 import { ProjectContext } from "../../contexts/ProjectContext";
 import { useParams } from "react-router-dom";
+import Button from "../button/Button";
 
 const Tabs = () => {
   const { projectId } = useParams();
@@ -14,19 +15,19 @@ const Tabs = () => {
     (project) => project._id === projectId
   );
   const [inputValues, setInputValues] = useState({
-    chatbotName: currentProject?.configuration?.chatbotName || "",
-    welcomeMessage: currentProject?.configuration?.welcomeMessage || "",
-    inputPlaceholder: currentProject?.configuration?.inputPlaceholder || "",
-    primaryColor: currentProject?.configuration?.primaryColor || "",
-    fontColor: currentProject?.configuration?.fontColor || "",
-    fontSize: currentProject?.configuration?.fontSize || "",
-    chatHeight: currentProject?.configuration?.chatHeight || "",
-    showSources: currentProject?.configuration?.showSources || true,
-    bottomDistance: currentProject?.configuration?.bottomDistance || "",
-    horizontalDistance: currentProject?.configuration?.horizontalDistance || "",
-    chatIconSize: currentProject?.configuration?.chatIconSize || "",
-    screenPosition: currentProject?.configuration?.screenPosition || "",
-    botIcon: currentProject?.configuration?.botIcon || "",
+    chatbotName: "",
+    welcomeMessage: "",
+    inputPlaceholder: "",
+    primaryColor: "",
+    fontColor: "",
+    fontSize: "",
+    chatHeight: "",
+    showSources: true,
+    bottomDistance: "",
+    horizontalDistance: "",
+    chatIconSize: "",
+    screenPosition: "",
+    botIcon: "",
   });
 
   const changeTab = (tabNumber) => {
@@ -54,36 +55,33 @@ const Tabs = () => {
   return (
     <div>
       <div className="flex gap-8 border-b-2 border-gray-300">
-        <button
-          className={`${
+        <Button
+          content={"General"}
+          customCss={`${
             activeTab === 1
               ? "text-primary font-bold border-b-4 border-primary"
               : ""
           } p-2`}
-          onClick={() => changeTab(1)}
-        >
-          General
-        </button>
-        <button
-          className={`${
+          handleClick={() => changeTab(1)}
+        />
+        <Button
+          content={"Display"}
+          customCss={`${
             activeTab === 2
               ? "text-primary font-bold border-b-4 border-primary"
               : ""
           } p-2`}
-          onClick={() => changeTab(2)}
-        >
-          Display
-        </button>
-        <button
-          className={`${
+          handleClick={() => changeTab(2)}
+        />
+        <Button
+          content={"Advanced"}
+          customCss={`${
             activeTab === 3
               ? "text-primary font-bold border-b-4 border-primary"
               : ""
           } p-2`}
-          onClick={() => changeTab(3)}
-        >
-          Advanced
-        </button>
+          handleClick={() => changeTab(3)}
+        />
       </div>
       <div className="mt-6">
         {/* Content for each tab */}

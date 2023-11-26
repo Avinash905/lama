@@ -1,5 +1,9 @@
 const fileServices = require("../services/fileServices");
 
+/**
+ * GET /api/file/:projectId
+ * Fetches a list of all files of a particular project.
+ */
 const getFiles = async (req, res, next) => {
   try {
     const { projectId } = req.params;
@@ -14,6 +18,10 @@ const getFiles = async (req, res, next) => {
   }
 };
 
+/**
+ * POST /api/file
+ *  Creates a file for a particular project.
+ */
 const uploadFile = async (req, res, next) => {
   try {
     const { projectId, filename, description } = req.body;
@@ -32,6 +40,10 @@ const uploadFile = async (req, res, next) => {
   }
 };
 
+/**
+ * UPDATE /api/file
+ * Updates the description of a file.
+ */
 const updateFileDescription = async (req, res, next) => {
   try {
     const { fileId, description } = req.body;
@@ -46,6 +58,10 @@ const updateFileDescription = async (req, res, next) => {
   }
 };
 
+/**
+ * DELETE /api/file
+ * Deletes a file.
+ */
 const deleteFile = async (req, res, next) => {
   try {
     if (!req.body.fileId) return res.sendStatus(400);

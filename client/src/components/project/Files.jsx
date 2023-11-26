@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { ProjectContext } from "../../contexts/ProjectContext";
 import formatTimestamp from "../../utils/formatTimestamp";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "../button/Button";
 
 const Files = () => {
-  const { files, deleteFile, setEditFileId } = useContext(ProjectContext);
+  const { files, deleteFile, setEditFileId, isLoading } =
+    useContext(ProjectContext);
   const { projectId } = useParams();
   const navigate = useNavigate();
 
@@ -23,9 +25,10 @@ const Files = () => {
         <span className="text-white text-xl">
           All files are processed! Your widget is ready to go!
         </span>
-        <button className="bg-white px-6 py-2 rounded font-semibold text-sm">
-          Try it out!
-        </button>
+        <Button
+          content={"Try it out!"}
+          customCss={"bg-white px-6 py-2 rounded font-semibold text-sm"}
+        />
       </div>
       <div className="border border-gray-300 rounded-xl shadow-lg">
         <table className="w-full">
@@ -50,18 +53,20 @@ const Files = () => {
                   </td>
                   <td className="px-12 py-3 text-center">Done</td>
                   <td className="px-12 py-3 text-right flex items-center justify-end">
-                    <button
-                      className="w-14 h-7 text-sm border border-gray-300 rounded-l"
-                      onClick={() => handleEdit(file._id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="text-red-500 w-14 h-7 text-sm border border-gray-300 rounded-r"
-                      onClick={() => handleDelete(file._id)}
-                    >
-                      Delete
-                    </button>
+                    <Button
+                      content={"Edit"}
+                      customCss={
+                        "w-14 h-7 text-sm border border-gray-300 rounded-l"
+                      }
+                      handleClick={() => handleEdit(file._id)}
+                    />
+                    <Button
+                      content={"Delete"}
+                      customCss={
+                        "text-red-500 w-14 h-7 text-sm border border-gray-300 rounded-r"
+                      }
+                      handleClick={() => handleDelete(file._id)}
+                    />
                   </td>
                 </tr>
               );

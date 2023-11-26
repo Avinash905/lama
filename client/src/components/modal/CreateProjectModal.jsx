@@ -52,7 +52,7 @@ const CreateProjectModal = () => {
         <div className="flex gap-4 justify-end">
           <Button
             content={"Cancel"}
-            customCss={"text-red-500 py-2 px-4 rounded-lg hover:bg-gray-100"}
+            customCss={"text-red-500 py-2 px-4 rounded-lg hover:bg-gray-50"}
             handleClick={closeCreateProjectModal}
           />
           <Button

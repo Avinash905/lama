@@ -11,7 +11,7 @@ const Button = ({
     <button
       disabled={loading}
       onClick={handleClick}
-      className={`${customCss} flex items-center justify-center`}
+      className={`${customCss} flex items-center justify-center hover:shadow-md`}
     >
       {loading ? (
         <>

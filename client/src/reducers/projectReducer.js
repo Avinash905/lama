@@ -69,6 +69,7 @@ const projectReducer = (state, action) => {
           ),
           action.payload,
         ],
+        isLoading: false,
       };
 
     default:

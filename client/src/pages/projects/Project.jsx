@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 const Project = () => {
   const [clickedCardData, setClickedCardData] = useState({});
-  const { files, getFiles } = useContext(ProjectContext);
+  const { files, getFiles, projects } = useContext(ProjectContext);
   const { projectId } = useParams();
 
   const uploadTypes = [
@@ -18,7 +18,9 @@ const Project = () => {
     files?.length > 0 ? [...uploadTypes] : [...uploadTypes, ...uploadTypes];
 
   useEffect(() => {
-    getFiles(projectId);
+    if (projectId !== undefined) {
+      getFiles(projects[0]._id);
+    } else getFiles(projectId);
   }, []);
 
   return (

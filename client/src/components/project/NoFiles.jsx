@@ -1,5 +1,6 @@
 import React from "react";
 import { cloudUpload } from "../../assets";
+import Button from "../button/Button";
 
 const NoFiles = () => {
   return (
@@ -19,9 +20,12 @@ const NoFiles = () => {
         <p className="text-gray-500">
           MP4, MOV, MP3, WAV, PDF, DOCX or TXT file
         </p>
-        <button className="rounded-full py-2 px-6 text-primary border border-primary">
-          Select File
-        </button>
+        <Button
+          content={"Select File"}
+          customCss={
+            "rounded-full py-2 px-6 text-primary border border-primary"
+          }
+        />
       </div>
     </>
   );

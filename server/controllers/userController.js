@@ -1,5 +1,9 @@
 const userServices = require("../services/userServices");
 
+/**
+ * POST /api/user
+ * Fetches a user if present otherwise creates a new user.
+ */
 const findOrCreateUser = async (req, res, next) => {
   try {
     const { email } = req.body;
@@ -13,6 +17,10 @@ const findOrCreateUser = async (req, res, next) => {
   }
 };
 
+/**
+ * UPDATE /api/user
+ * Updates username of a user.
+ */
 const updateUsername = async (req, res, next) => {
   try {
     const { newUsername, userId } = req.body;

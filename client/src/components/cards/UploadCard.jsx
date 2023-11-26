@@ -11,7 +11,7 @@ const UploadCard = ({ image, altText, text, setClickedCardData }) => {
 
   return (
     <div
-      className="flex gap-8 shadow-lg border border-gray-400 rounded-xl p-5 cursor-pointer"
+      className="flex gap-8 shadow-md hover:shadow-lg border border-gray-400 rounded-xl p-5 cursor-pointer"
       onClick={clickHandler}
     >
       <img

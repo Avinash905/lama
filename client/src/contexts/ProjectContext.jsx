@@ -86,7 +86,7 @@ const ProjectProvider = ({ children }) => {
     }
   };
 
-  const updateFileDescription = async (fileId) => {
+  const updateFileDescription = async (fileId, description) => {
     try {
       dispatch({ type: "LOADING", payload: true });
 

@@ -7,7 +7,7 @@ const CreateNewProject = ({ size }) => {
 
   return (
     <button
-      className={`flex items-center gap-3 rounded-lg bg-slate-900 ${
+      className={`flex items-center gap-3 rounded-lg bg-slate-900 hover:shadow-md ${
         size === "small" ? "px-4 py-2" : "px-6 py-4"
       }`}
       onClick={openCreateProjectModal}

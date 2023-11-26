@@ -18,7 +18,8 @@ const UploadModal = ({ clickedCardData }) => {
     uploadFile({ projectId, filename, description });
     setFileName("");
     setDescription("");
-    // closeUploadModal();
+
+    if (!isLoading) closeUploadModal();
   };
 
   return (
@@ -81,7 +82,7 @@ const UploadModal = ({ clickedCardData }) => {
         <Button
           content={"Upload"}
           customCss={
-            "text-white bg-gray-800 py-2 px-6 rounded-md w-fit ml-auto"
+            "text-white bg-gray-800 py-2 px-6 rounded-md w-[99px] ml-auto"
           }
           handleClick={handleUpload}
           loading={isLoading}
