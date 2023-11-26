@@ -28,7 +28,7 @@ const CreateProjectModal = () => {
       }`}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="z-10 bg-white p-6 rounded-lg w-1/2 flex flex-col gap-6">
+      <div className="z-10 bg-white p-6 rounded-lg w-1/3 flex flex-col gap-6">
         <h2 className="font-bold text-2xl">Create Project</h2>
         <form className="flex flex-col gap-2">
           <label
