@@ -14,7 +14,7 @@ const SelectInput = ({ options, id, label, inputValues, handleChange }) => {
         name={id}
         id={id}
         className="px-3 py-2 border border-gray-400 rounded-lg w-full"
-        value={inputValues}
+        value={inputValues.id}
         onChange={handleChange}
       >
         {options.map((option, i) => {

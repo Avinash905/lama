@@ -24,6 +24,10 @@ const EditTranscript = ({}) => {
 
   useEffect(() => {
     document.querySelector(".Projects").classList.add("active");
+
+    return () => {
+      document.querySelector(".Projects").classList.remove("active");
+    };
   }, []);
 
   if (isLoading) return <PageLoading />;
