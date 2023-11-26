@@ -18,9 +18,9 @@ const Project = () => {
     files?.length > 0 ? [...uploadTypes] : [...uploadTypes, ...uploadTypes];
 
   useEffect(() => {
-    if (projectId !== undefined) {
-      getFiles(projects[0]._id);
-    } else getFiles(projectId);
+    if (projectId === undefined) {
+      getFiles(projectId);
+    } else getFiles(projects[0]._id);
   }, []);
 
   return (
