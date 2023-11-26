@@ -1,19 +1,28 @@
 const userReducer = (state, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case "LOADING":
       return {
         ...state,
-        count: state.count + 1,
+        isLoading: true,
       };
-    case "DECREMENT":
+    case "ERROR":
       return {
         ...state,
-        count: state.count > 0 ? state.count - 1 : 0,
+        isLoading: false,
+        isError: true,
       };
-    case "INCREMENT_BY_NUM":
+    case "SET_USER":
+      const { username, email, _id } = action.payload;
+      localStorage.setItem("username", email);
+      localStorage.setItem("email", email);
+      localStorage.setItem("userId", _id);
+
       return {
         ...state,
-        count: state.count + parseInt(action.payload),
+        username: username,
+        email: email,
+        userId: _id,
+        isLoading: false,
       };
 
     default:

@@ -2,28 +2,13 @@ const mongoose = require("mongoose");
 
 const schema = mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
     },
     email: {
       type: String,
+      unique: true,
     },
-    password: {
-      type: String,
-    },
-    profilePicture: { type: String, default: "" },
-    favorites: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Recipe",
-      },
-    ],
-    roles: {
-      type: [String],
-      default: ["BasicUser"],
-    },
-    isDisabled: { type: Boolean, default: false },
-    refreshToken: { type: [String] },
   },
   {
     timestamps: true,

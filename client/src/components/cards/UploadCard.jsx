@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../../contexts/ModalContext";
 
-const UploadCard = ({ image, altText, text, openModal }) => {
+const UploadCard = ({ image, altText, text, setClickedCardData }) => {
+  const { openUploadModal } = useContext(ModalContext);
+
   const clickHandler = () => {
-    openModal(image, altText);
+    setClickedCardData({ image, altText });
+    openUploadModal();
   };
 
   return (

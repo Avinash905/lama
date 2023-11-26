@@ -5,13 +5,14 @@ import HomeMenu from "./menu/HomeMenu";
 import BackToHome from "./backToHome/BackToHome";
 import CreateNewProject from "./button/CreateNewProject";
 import CreateProjectModal from "./modal/CreateProjectModal";
+import EmailModal from "./modal/EmailModal";
 import UploadModal from "./modal/UploadModal";
 import ProjectCard from "./cards/ProjectCard";
 import UploadCard from "./cards/UploadCard";
 import Sidebar from "./sidebar/Sidebar";
 import SidebarLinks from "./sidebar/SidebarLinks";
-import EmptyProject from "./project/EmptyProject";
-import NonEmptyProject from "./project/NonEmptyProject";
+import NoFiles from "./project/NoFiles";
+import Files from "./project/Files";
 import Tabs from "./tabs/Tabs";
 import Input from "./input/Input";
 import SelectInput from "./input/SelectInput";
@@ -25,13 +26,14 @@ export {
   BackToHome,
   CreateNewProject,
   CreateProjectModal,
+  EmailModal,
   UploadModal,
   ProjectCard,
   Sidebar,
   SidebarLinks,
   UploadCard,
-  EmptyProject,
-  NonEmptyProject,
+  NoFiles,
+  Files,
   Tabs,
   Input,
   SelectInput,

@@ -1,67 +1,30 @@
-const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const userServices = require("../services/userServices");
 
-const getAllUsers = async (req, res, next) => {
+const findOrCreateUser = async (req, res, next) => {
   try {
-    const users = await User.find()
-      .find({ _id: { $ne: req.user } })
-      .select(["-password", "-refreshToken", "-favorites"]);
-    res.status(200).json(users);
+    const { email } = req.body;
+
+    if (!email) return res.sendStatus(400);
+
+    const user = await userServices.findOrCreateUser(email);
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }
 };
 
-const updateUser = async (req, res, next) => {
+const updateUsername = async (req, res, next) => {
   try {
-    const { name, email, password, image } = req.body;
+    const { newUsername, userId } = req.body;
 
-    const foundUser = await User.findOne({ email });
+    if (!newUsername || !userId) return res.sendStatus(400);
 
-    if (foundUser._id.toString() !== req.user) {
-      return res.status(409).json({ message: "Email already in use" });
-    }
+    const user = await await userServices.updateUsername(userId, newUsername);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    foundUser.name = name;
-    foundUser.email = email;
-    foundUser.password = hashedPassword;
-    foundUser.profilePicture = image || foundUser.profilePicture;
-
-    await foundUser.save();
-
-    const accessToken = jwt.sign(
-      {
-        UserInfo: {
-          userId: req.params._id,
-          name: name,
-          email: email,
-          profilePicture: image || foundUser.profilePicture,
-          roles: foundUser.roles,
-          favorites: foundUser.favorites,
-        },
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "30m" }
-    );
-    return res.status(201).json({ accessToken });
+    return res.status(201).json(user);
   } catch (error) {
     next(error);
   }
 };
 
-const disableUser = async (req, res, next) => {
-  try {
-    const user = await User.findOneAndUpdate(
-      { _id: req.params.id },
-      { isDisabled: true }
-    );
-    res.sendStatus(204);
-  } catch (error) {
-    next(error);
-  }
-};
-
-module.exports = { getAllUsers, updateUser, disableUser };
+module.exports = { findOrCreateUser, updateUsername };

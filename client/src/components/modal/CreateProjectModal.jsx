@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ModalContext } from "../../contexts/ModalContext";
+import { ProjectContext } from "../../contexts/ProjectContext";
 
-const CreateProjectModal = ({ isModalOpen, toggleModal }) => {
+const CreateProjectModal = () => {
+  const { createProjectModalOpen, closeCreateProjectModal } =
+    useContext(ModalContext);
+  const { createNewProject } = useContext(ProjectContext);
   const [projectName, setProjectName] = useState("");
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
+
+  const handleCreate = () => {
+    if (!projectName) {
+      setError(true);
+      return;
+    }
+    createNewProject(projectName);
+    setProjectName("");
+    setError(false);
+    closeCreateProjectModal();
+  };
 
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center ${
-        isModalOpen ? "" : "hidden"
+        createProjectModalOpen ? "" : "hidden"
       }`}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -26,7 +42,7 @@ const CreateProjectModal = ({ isModalOpen, toggleModal }) => {
             id="projectName"
             placeholder="Type here"
             value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
+            onChange={(event) => setProjectName(event.target.value)}
           />
           {error && (
             <span className="text-red-500">Project Name can't be empty</span>
@@ -35,11 +51,14 @@ const CreateProjectModal = ({ isModalOpen, toggleModal }) => {
         <div className="flex gap-4 justify-end">
           <button
             className="text-red-500 py-2 px-4 rounded-lg hover:bg-gray-100"
-            onClick={toggleModal}
+            onClick={closeCreateProjectModal}
           >
             Cancel
           </button>
-          <button className="text-white bg-primary py-2 px-4 rounded-lg">
+          <button
+            className="text-white bg-primary py-2 px-4 rounded-lg"
+            onClick={handleCreate}
+          >
             Create
           </button>
         </div>

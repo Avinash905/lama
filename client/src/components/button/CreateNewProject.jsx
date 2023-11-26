@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createNew } from "../../assets";
+import { ModalContext } from "../../contexts/ModalContext";
 
-const CreateNewProject = ({ size, toggleModal }) => {
-  const clickHandler = () => {
-    toggleModal();
-  };
+const CreateNewProject = ({ size }) => {
+  const { openCreateProjectModal } = useContext(ModalContext);
 
   return (
     <button
       className={`flex items-center gap-3 rounded-lg bg-slate-900 ${
         size === "small" ? "px-4 py-2" : "px-6 py-4"
       }`}
-      onClick={clickHandler}
+      onClick={openCreateProjectModal}
     >
       <img
         src={createNew}

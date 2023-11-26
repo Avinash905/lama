@@ -25,14 +25,20 @@ function App() {
               path="settings"
               element={<Settings />}
             />
-            <Route
-              path="configuration"
-              element={<Configuration />}
-            />
-            <Route
-              path="project"
-              element={<EditTranscript />}
-            />
+            <Route path="project">
+              <Route
+                path="upload/:projectId"
+                element={<Project />}
+              />
+              <Route
+                path="configuration/:projectId"
+                element={<Configuration />}
+              />
+              <Route
+                path="transcript/:projectId"
+                element={<EditTranscript />}
+              />
+            </Route>
           </Route>
           <Route
             path="/"
@@ -41,10 +47,6 @@ function App() {
             <Route
               index
               element={<Home />}
-            />
-            <Route
-              path="projects"
-              element={<Projects />}
             />
             <Route
               path="/*"
